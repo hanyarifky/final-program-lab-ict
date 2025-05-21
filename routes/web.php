@@ -1,6 +1,8 @@
 <?php
 
 use App\Models\Dosen;
+use App\Models\Matkul;
+use App\Models\Ruangan;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MatkulController;
@@ -22,7 +24,9 @@ Route::post('/logout', [LoginController::class, 'logout']);
 // Fitur Dashboard
 Route::get('/dashboard', function () {
     return view('dashboard.index', [
-        "totalDosen" => Dosen::count()
+        "totalDosen" => Dosen::count(),
+        "totalMatkul" => Matkul::count(),
+        "totalRuangan" => Ruangan::count()
     ]);
 })->middleware('auth');
 
@@ -39,3 +43,5 @@ Route::resource('/dashboard/dosen', DashboardDosenController::class);
 
 // Dashboard Ruangan
 Route::resource('/dashboard/ruangan', DashboardRuanganController::class);
+
+// Dashboard Kelas
