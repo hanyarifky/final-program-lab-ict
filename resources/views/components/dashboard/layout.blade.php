@@ -286,18 +286,26 @@
                             </li>
                             
                             <li>
+                                <a href="/dashboard/matkul" class="waves-effect">
+                                    <i class="fas fa-book"></i>
+                                    <span>Data Mata Kuliah</span>
+                                </a>
+                            </li>
+                            
+                            <li>
+                                <a href="/dashboard/kelas" class="waves-effect">
+                                    <i class="fas fa-users"></i>
+                                    <span>Data Kelas</span>
+                                </a>
+                            </li>
+
+                            <li>
                                 <a href="/dashboard/ruangan" class="waves-effect">
                                     <i class="fas fa-desktop"></i>
                                     <span>Data Ruangan</span>
                                 </a>
                             </li>
                             
-                            <li>
-                                <a href="/dashboard/matkul" class="waves-effect">
-                                    <i class="fas fa-book"></i>
-                                    <span>Data Mata Kuliah</span>
-                                </a>
-                            </li>
                         </ul>
                     </div>
                     <!-- Sidebar -->

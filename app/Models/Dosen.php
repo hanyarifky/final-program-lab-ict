@@ -11,11 +11,16 @@ class Dosen extends Model
     /** @use HasFactory<\Database\Factories\PostFactory> */
     use HasFactory;
 
+    protected $table = 'dosen';
+    protected $guarded = ['id'];
+
     public function getRouteKeyName()
     {
         return 'nip';
     }
 
-    protected $table = 'dosen';
-    protected $guarded = ['id'];
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class, "dosen_id");
+    }
 }

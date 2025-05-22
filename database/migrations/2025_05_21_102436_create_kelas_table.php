@@ -12,7 +12,10 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('kelas', function (Blueprint $table) {
-            $table->id();
+            $table->id()->primary();
+            $table->foreignId('dosen_id')->constrained('dosen')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreignId('matkul_id')->constrained('mata_kuliah')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('kelompok');
             $table->timestamps();
         });
     }

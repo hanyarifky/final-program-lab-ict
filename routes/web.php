@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\MatkulController;
 use App\Http\Controllers\DashboardDosenController;
+use App\Http\Controllers\DashboardKelasController;
+use App\Http\Controllers\DashboardJadwalController;
 use App\Http\Controllers\DashboardMatkulController;
 use App\Http\Controllers\DashboardRuanganController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -45,3 +47,7 @@ Route::resource('/dashboard/dosen', DashboardDosenController::class);
 Route::resource('/dashboard/ruangan', DashboardRuanganController::class);
 
 // Dashboard Kelas
+Route::resource('/dashboard/kelas', DashboardKelasController::class);
+
+// Dashboard Jadwal
+Route::resource('/dashboard/jadwal', DashboardJadwalController::class);

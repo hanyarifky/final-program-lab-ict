@@ -13,4 +13,9 @@ class Matkul extends Model
     {
         return "kode_mata_kuliah";
     }
+
+    public function kelas()
+    {
+        return $this->hasMany(Kelas::class, "matkul_id");
+    }
 }

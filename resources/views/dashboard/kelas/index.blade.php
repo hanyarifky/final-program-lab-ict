@@ -6,38 +6,36 @@
 
                      <div class="d-flex justify-content-between">
                         
-                        <h1 class="card-title mb-3">Jadwal Lab</h1>
+                        <h1 class="card-title mb-3">Data Kelas</h1>
                         {{-- <z href="#" class="btn btn-success font-weight-bolder waves-effect waves-light mb-3">Tambah Data</z> --}}
-                        <a href="/dashboard/jadwal/create" class="btn btn-success font-weight-bolder waves-effect waves-light mb-3" >Tambah Data</a>
+                        <a href="/dashboard/kelas/create" class="btn btn-success font-weight-bolder waves-effect waves-light mb-3" >Tambah Data</a>
 
                     </div>
 
                     <table id="datatable-buttons" class="table table-striped table-bordered dt-responsive nowrap" style="border-collapse: collapse; border-spacing: 0; width: 100%;">
                         <thead>
                         <tr>
-                            <th>Mata Kuliah</th>
-                            <th>Waktu</th>
-                            <th>Kelompok</th>
-                            <th>Ruang</th>
                             <th>Nama Dosen</th>
+                            <th>Nama Mata Kuliah</th>
+                            <th>Kelompok</th>
+                            <th>SKS</th>
                             <th  style="width: 10%" class="text-center">Action</th>
                         </tr>
                         </thead>
 
 
                         <tbody>
-                        @foreach ($jadwals as $jadwal)
+                        @foreach ($kelases as $kelas)
                         <tr>
-                            <td>{{ $jadwal->kelas->matkul->nama_mata_kuliah }}</td>
-                            <td>{{ $jadwal->jam_mulai}} - {{ $jadwal->jam_selesai }}</td>
-                            <td>{{ $jadwal->kelas->kelompok}}</td>
-                            <td>{{ $jadwal->ruangan }}</td>
-                            <td>{{ $jadwal->kelas->dosen->nama }}</td>
+                            <td>{{ $kelas->dosen->nama }}</td>
+                            <td>{{ $kelas->matkul->nama_mata_kuliah}}</td>
+                            <td>{{ $kelas->kelompok}}</td>
+                            <td>{{ $kelas->matkul->sks }}</td>
                             <td class="text-center d-flex gap-1 justify-content-center">
-                                <a class="btn btn-outline-secondary btn-sm edit" href="/dashboard/jadwal/{{ $jadwal->id }}/edit" title="Edit">
+                                <a class="btn btn-outline-secondary btn-sm edit" href="/dashboard/kelas/{{ $kelas->id }}/edit" title="Edit">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
-                                <form action="/dashboard/jadwal/{{ $jadwal->id }}" method="POST">
+                                <form action="/dashboard/kelas/{{ $kelas->id }}" method="POST">
                                     @method("delete")
                                     @csrf
                                     <button onclick="return confirm('Are you sure want to delete this?')" class="btn btn-outline-secondary btn-sm delete" title="Edit">

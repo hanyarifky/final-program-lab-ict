@@ -1,4 +1,5 @@
 <x-dashboard.layout>
+    {{ dd($dosen) }}
     <div class="row">
         <div class="col-12">
             <div class="card">
