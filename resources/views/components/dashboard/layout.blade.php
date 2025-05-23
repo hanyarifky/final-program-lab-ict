@@ -350,6 +350,8 @@
 
     </div>
     <!-- END layout-wrapper -->
+
+    {{-- JavaScript untuk tambah/hapus input detail dinamis --}}
     
     <!-- JAVASCRIPT -->
     @include('sweetalert2::index')

@@ -50,4 +50,5 @@ Route::resource('/dashboard/ruangan', DashboardRuanganController::class);
 Route::resource('/dashboard/kelas', DashboardKelasController::class);
 
 // Dashboard Jadwal
+Route::get('/dashboard/jadwal/createAcara', [DashboardJadwalController::class, 'create']);
 Route::resource('/dashboard/jadwal', DashboardJadwalController::class);

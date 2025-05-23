@@ -16,6 +16,7 @@ return new class extends Migration
             $table->foreignId('dosen_id')->constrained('dosen')->onDelete('cascade')->onUpdate('cascade');
             $table->foreignId('matkul_id')->constrained('mata_kuliah')->onDelete('cascade')->onUpdate('cascade');
             $table->string('kelompok');
+            $table->date("tanggal_mulai");
             $table->timestamps();
         });
     }

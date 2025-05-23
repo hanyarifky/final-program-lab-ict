@@ -4,11 +4,20 @@
             <div class="card">
                 <div class="card-body">
 
-                     <div class="d-flex justify-content-between">
+                     <div class="d-flex justify-content-between mb-3">
                         
                         <h1 class="card-title mb-3">Jadwal Lab</h1>
                         {{-- <z href="#" class="btn btn-success font-weight-bolder waves-effect waves-light mb-3">Tambah Data</z> --}}
-                        <a href="/dashboard/jadwal/create" class="btn btn-success font-weight-bolder waves-effect waves-light mb-3" >Tambah Data</a>
+                        <div class="dropdown">
+                            <a class="btn btn-success dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Tambah Data
+                            </a>
+
+                            <ul class="dropdown-menu">
+                                <li><a class="dropdown-item" href="jadwal/create">Tambah Data Kelas</a></li>
+                                <li><a class="dropdown-item" href="jadwal/createAcara">Tambah Data Acara</a></li>
+                            </ul>
+                        </div>
 
                     </div>
 
@@ -28,12 +37,20 @@
                         <tbody>
                         @foreach ($jadwals as $jadwal)
                         <tr>
-                            <td>{{ $jadwal->kelas->matkul->nama_mata_kuliah }}</td>
+                            <td>
+                                @if($jadwal->details->contains('status', 'KP')) 
+                                KP 
+                                @endif
+                                {{ $jadwal->kelas->matkul->nama_mata_kuliah }}
+                            </td>
                             <td>{{ $jadwal->jam_mulai}} - {{ $jadwal->jam_selesai }}</td>
                             <td>{{ $jadwal->kelas->kelompok}}</td>
-                            <td>{{ $jadwal->ruangan }}</td>
+                            <td>{{ $jadwal->ruangan->nomor_ruangan }}</td>
                             <td>{{ $jadwal->kelas->dosen->nama }}</td>
                             <td class="text-center d-flex gap-1 justify-content-center">
+                                <a class="btn btn-outline-secondary btn-sm edit" href="/dashboard/jadwal/{{ $jadwal->id }}/" title="Edit">
+                                    <i class="fas fa-eye"></i>
+                                </a>
                                 <a class="btn btn-outline-secondary btn-sm edit" href="/dashboard/jadwal/{{ $jadwal->id }}/edit" title="Edit">
                                     <i class="fas fa-pencil-alt"></i>
                                 </a>
