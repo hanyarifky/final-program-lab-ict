@@ -37,7 +37,6 @@ class DashboardRuanganController extends Controller
     {
         $validateData = $request->validate([
             "kode_ruangan" => "required|string",
-            "nomor_ruangan" => "required|string",
             "nama_ruangan" => "required|string",
         ]);
 
@@ -51,7 +50,12 @@ class DashboardRuanganController extends Controller
             ]);
             return redirect('/dashboard/ruangan');
         } catch (\Exception $e) {
-            return $e;
+            Swal::fire([
+                'title' => 'Gagal Tambah Data',
+                'icon' => 'error',
+                'confirmButtonText' => 'Oke'
+            ]);
+            return redirect('/dashboard/ruangan');
         }
     }
 
@@ -82,7 +86,6 @@ class DashboardRuanganController extends Controller
     public function update(Request $request, Ruangan $ruangan)
     {
         $rulesData = [
-            "nomor_ruangan" => "required|string",
             "nama_ruangan" => "required|string",
         ];
 

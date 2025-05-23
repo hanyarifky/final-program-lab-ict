@@ -45,10 +45,10 @@
                             </td>
                             <td>{{ $jadwal->jam_mulai}} - {{ $jadwal->jam_selesai }}</td>
                             <td>{{ $jadwal->kelas->kelompok}}</td>
-                            <td>{{ $jadwal->ruangan->nomor_ruangan }}</td>
+                            <td>{{ $jadwal->ruangan->nama_ruangan }}</td>
                             <td>{{ $jadwal->kelas->dosen->nama }}</td>
                             <td class="text-center d-flex gap-1 justify-content-center">
-                                <a class="btn btn-outline-secondary btn-sm edit" href="/dashboard/jadwal/{{ $jadwal->id }}/" title="Edit">
+                                <a class="btn btn-outline-secondary btn-sm edit" href="/dashboard/jadwal/{{ $jadwal->id }}/" title="View">
                                     <i class="fas fa-eye"></i>
                                 </a>
                                 <a class="btn btn-outline-secondary btn-sm edit" href="/dashboard/jadwal/{{ $jadwal->id }}/edit" title="Edit">
@@ -57,7 +57,7 @@
                                 <form action="/dashboard/jadwal/{{ $jadwal->id }}" method="POST">
                                     @method("delete")
                                     @csrf
-                                    <button onclick="return confirm('Are you sure want to delete this?')" class="btn btn-outline-secondary btn-sm delete" title="Edit">
+                                    <button onclick="return confirm('Are you sure want to delete this?')" class="btn btn-outline-secondary btn-sm delete" title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>

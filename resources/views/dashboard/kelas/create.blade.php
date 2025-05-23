@@ -55,9 +55,9 @@
                                 <div class="col-sm-10">
                                     <select class="form-select @error('ruangan_id') is-invalid @enderror" name="ruangan_id" required>
                                         <option selected disabled>Pilih Ruangan</option>
-                                        @foreach ($ruangans as $ruangan)
-                                        <option value="{{ $ruangan->id }}" {{ old('ruangan_id') == $ruangan->id ? 'selected' : '' }}>
-                                            {{ $ruangan->nomor_ruangan }}
+                                        @foreach ($ruangans->sortBy('kode_ruangan') as $ruangan)
+                                        <option value="{{ $ruangan->id }}" {{ old('ruangan_id') == $ruangan->nama_ruangan ? 'selected' : '' }}>
+                                            {{ $ruangan->nama_ruangan }}
                                         </option>
                                         @endforeach
                                     </select>

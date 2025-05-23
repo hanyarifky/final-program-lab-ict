@@ -52,15 +52,18 @@
                                        @enderror
                                    </div>
                             </div>
+                            <input type="hidden" name="tanggal_mulai" 
+                            value="{{ old('tanggal_mulai', \Carbon\Carbon::parse($kelas->tanggal_mulai)->format('Y-m-d')) }}" 
+                            readonly />
 
                             <div class="row mb-3">
                                 <label class="col-sm col-form-label">Ruangan Lab</label>
                                 <div class="col-sm-10">
                                     <select class="form-select @error('ruangan_id') is-invalid @enderror" name="ruangan_id" required>
                                         <option selected disabled>Pilih Ruangan</option>
-                                        @foreach ($ruangans as $ruangan)
-                                        <option value="{{ $ruangan->id }}" {{ old('ruangan_id') == $ruangan->id ? 'selected' : '' }}>
-                                            {{ $ruangan->nomor_ruangan }}
+                                        @foreach ($ruangans->sortBy('kode_ruangan') as $ruangan)
+                                        <option value="{{ $ruangan->id }}" {{ old('ruangan_id', $jadwal->ruangan->id) == $ruangan->id ? 'selected' : '' }}>
+                                            {{ $ruangan->nama_ruangan }}
                                         </option>
                                         @endforeach
                                     </select>
@@ -73,7 +76,7 @@
                              <div class="row mb-3">
                                 <label class="col-sm col-form-label">Jam Mulai</label>
                                 <div class="col-sm-10">
-                                    <input type="time" name="jam_mulai" class="form-control @error('jam_mulai') is-invalid @enderror" value="{{ old('jam_mulai', $jadwal->jam_mulai) }}" required>
+                                    <input type="time" name="jam_mulai" class="form-control @error('jam_mulai') is-invalid @enderror" value="{{ old('jam_mulai', \Carbon\Carbon::parse($jadwal->jam_mulai)->format('H:i')) }}" required>
                                     @error('jam_mulai')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
@@ -83,17 +86,8 @@
                             <div class="row mb-3">
                                 <label class="col-sm col-form-label">Jam Selesai</label>
                                 <div class="col-sm-10">
-                                    <input type="time" name="jam_selesai" class="form-control @error('jam_selesai') is-invalid @enderror" value="{{ old('jam_selesai', $jadwal->jam_selesai) }}" required>
+                                    <input type="time" name="jam_selesai" class="form-control @error('jam_selesai') is-invalid @enderror" value="{{ old('jam_selesai', \Carbon\Carbon::parse($jadwal->jam_selesai)->format('H:i')) }}" required>
                                     @error('jam_selesai')
-                                        <div class="invalid-feedback">{{ $message }}</div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row mb-3">
-                                <label class="col-sm col-form-label">Tanggal Mulai</label>
-                                <div class="col-sm-10">
-                                    <input type="date" name="tanggal_mulai" class="form-control @error('tanggal_mulai') is-invalid @enderror" value="{{ old('tanggal_mulai', $kelas->tanggal_mulai) }}" required>
-                                    @error('tanggal_mulai')
                                         <div class="invalid-feedback">{{ $message }}</div>
                                     @enderror
                                 </div>

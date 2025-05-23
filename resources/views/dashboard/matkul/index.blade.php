@@ -36,7 +36,7 @@
                                 <form action="/dashboard/matkul/{{ $matkul->kode_mata_kuliah }}" method="POST">
                                     @method("delete")
                                     @csrf
-                                    <button onclick="return confirm('Are you sure want to delete this?')" class="btn btn-outline-secondary btn-sm delete" title="Edit">
+                                    <button onclick="return confirm('Are you sure want to delete this?')" class="btn btn-outline-secondary btn-sm delete" title="Delete">
                                         <i class="fas fa-trash"></i>
                                     </button>
                                 </form>

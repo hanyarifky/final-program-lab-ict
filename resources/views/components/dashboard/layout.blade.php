@@ -241,7 +241,7 @@
 
             <div data-simplebar class="h-100">
                <div id="sidebar-menu">
-                        <!-- Left Menu Start -->
+                        <!-- Left Menu Start -->    
                         <ul class="metismenu list-unstyled" id="side-menu">
                             <li class="menu-title">Menu</li>
 
@@ -267,7 +267,7 @@
                                 </a>
 
                                 <ul class="sub-menu" aria-expanded="false">
-                                    <li><a href="icons-remix.html">
+                                    <li><a href="   booking-kp">
                                         <i class="fas fa-user-graduate"></i>
                                         Kuliah Pengganti</a></li>
                                     <li><a href="icons-materialdesign.html">
