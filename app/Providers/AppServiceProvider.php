@@ -20,8 +20,5 @@ class AppServiceProvider extends ServiceProvider
     /**
      * Bootstrap any application services.
      */
-    public function boot(): void
-    {
-        View::share('booking_kp', Auth::check() ? Auth::booking_kp()->get() : collect());
-    }
+    public function boot(): void {}
 }
