@@ -20,16 +20,24 @@ use App\Http\Controllers\DashboardRuanganController;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 Route::get('/', function (Request $request) {
-    $tanggal = $request->input('tanggal', Carbon::today()->toDateString());
+    $tanggal = $request->input('tanggal', Carbon::today('Asia/Jakarta')->toDateString());
+    // dd($tanggal);
 
-    $jadwals = Jadwal::whereHas('details', function ($q) use ($tanggal) {
-        $q->where('tanggal', $tanggal);
+    $jadwals = Jadwal::whereHas('details', function ($query) use ($tanggal) {
+        $query->where('tanggal', $tanggal);
     })
-        ->with(['kelas.matkul', 'kelas.dosen', 'kelas', 'ruangan', 'details' => function ($q) use ($tanggal) {
-            $q->where('tanggal', $tanggal);
-        }])
+        ->with([
+            'kelas.matkul',       // relasi kelas dan matkul
+            'kelas.dosen',        // relasi kelas dan dosen
+            'kelas',              // relasi kelas
+            'ruangan',            // relasi ruangan
+            'details' => function ($query) use ($tanggal) { // hanya details dengan tanggal itu
+                $query->where('tanggal', $tanggal);
+            }
+        ])
         ->get();
 
+    // Kirim data ke view 'welcome' dengan variabel jadwals dan tanggal
     return view('welcome', compact('jadwals', 'tanggal'));
 });
 
@@ -53,22 +61,21 @@ Route::get('/dashboard', function () {
 })->middleware('auth');
 
 // Dashboard Matkul
-Route::resource('/dashboard/matkul', DashboardMatkulController::class);
+Route::resource('/dashboard/matkul', DashboardMatkulController::class)->middleware('auth');;
 
 // Dashboard Jadwal
 Route::get('/dashboard/jadwal', function () {
     return view('dashboard.jadwal.index');
-});
+})->middleware('auth');;
 
 // Dashboard Dosen
-Route::resource('/dashboard/dosen', DashboardDosenController::class);
+Route::resource('/dashboard/dosen', DashboardDosenController::class)->middleware('auth');;
 
 // Dashboard Ruangan
-Route::resource('/dashboard/ruangan', DashboardRuanganController::class);
+Route::resource('/dashboard/ruangan', DashboardRuanganController::class)->middleware('auth');;
 
 // Dashboard Kelas
-Route::resource('/dashboard/kelas', DashboardKelasController::class);
+Route::resource('/dashboard/kelas', DashboardKelasController::class)->middleware('auth');;
 
 // Dashboard Jadwal
-Route::get('/dashboard/jadwal/createAcara', [DashboardJadwalController::class, 'create']);
-Route::resource('/dashboard/jadwal', DashboardJadwalController::class);
+Route::resource('/dashboard/jadwal', DashboardJadwalController::class)->middleware('auth');;

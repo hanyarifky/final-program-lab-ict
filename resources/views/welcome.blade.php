@@ -13,7 +13,8 @@
 <div class="container mt-4">
     <h2 class="mb-4">Jadwal Mata Kuliah untuk tanggal {{ \Carbon\Carbon::parse($tanggal)->format('d M Y') }}</h2>
 
-    <form method="GET" action="{{ url()->current() }}" class="row g-3 align-items-center mb-4">
+    <div class="d-flex justify-content-between">
+<form method="GET" action="{{ url()->current() }}" class="row g-3 align-items-center mb-4">
         <div class="col-auto">
             <label for="tanggal" class="col-form-label">Pilih Tanggal:</label>
         </div>
@@ -27,6 +28,11 @@
             <a href="booking-kp/create" class="btn btn-primary">Booking KP</a>
         </div>
     </form>
+    <div class="">
+        <a href="/login " class="btn btn-primary">Login</a>
+    </div>
+    </div>
+    
 
     <div class="table-responsive">
         <table class="table table-bordered table-striped align-middle">
